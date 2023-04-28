@@ -13,13 +13,12 @@ const thoughtSchema = new Schema(
         type: Date,
         default: Date.now,
         get: (date)=> {
-            return `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`
+            return `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`
         }
     },
     username: {
         type: String,
-        required: true,
-        ref: "User"
+        required: true
     },
     reactions: [reactionSchema]
   },
@@ -36,7 +35,7 @@ thoughtSchema
   .virtual('reactionCount')
   .get(function () {
     return this.reactions.length;
-  });
+});
 
 
 const Thought = model('thought', thoughtSchema);

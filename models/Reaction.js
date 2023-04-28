@@ -19,7 +19,7 @@ const reactionSchema = new Schema(
       type: Date,
       default: Date.now,
       get: (date)=> {
-        return `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`
+        return `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`
     }
     },
   },
@@ -27,7 +27,7 @@ const reactionSchema = new Schema(
     toJSON: {
       getters: true,
     },
-    id: false,
+    id: false
   }
 );
 
